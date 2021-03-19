@@ -6,14 +6,14 @@ import fakeData from '../fakeData/data.json'
 const Rider = () => {
     const [data, setData] = useState([])
     console.log(data)
-    const {key} = useParams();
+    const { key } = useParams();
     console.log(key)
     useEffect(() => {
         const vehicle = fakeData.find(data => data.key === key)
         setData(vehicle)
-    }, [])
-    
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    }, [key])
+
+    const [loggedInUser] = useContext(UserContext);
     console.log(loggedInUser)
     return (
         <div>
