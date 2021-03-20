@@ -25,7 +25,7 @@ const Login = () => {
         to: '',
         success: false
     })
-    const [setLoggedInUser] = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
@@ -128,12 +128,12 @@ const Login = () => {
             .auth()
             .signInWithPopup(fbProvider)
             .then(res => {
-                console.log(res)
                 const { displayName, email } = res.user;
                 const signedInUser = {
                     isSignIn: true,
                     name: displayName,
                     email: email
+
                 }
                 setUser(signedInUser);
                 setLoggedInUser(signedInUser);
