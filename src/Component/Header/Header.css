@@ -1,7 +1,7 @@
 .header{
     display: flex;
     justify-content: space-between;
-    margin: 0px 50px;
+    padding-top: 50px;
     margin: 0% 10%;
 }
 .menu-bar{

@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
-import './Header.css'
+import './Header.css';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
     const [loggedInUser] = useContext(UserContext);
     const loggedUser = loggedInUser.isSignIn;
+
     return (
         <div>
             <div className="header">
@@ -24,6 +26,15 @@ const Header = () => {
 
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
         </div>
     );
 };

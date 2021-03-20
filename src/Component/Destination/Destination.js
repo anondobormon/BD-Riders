@@ -15,10 +15,12 @@ const Destination = () => {
 
 
     const [location, setLocation] = useState({})
-    // console.log(location)
+    console.log(location); 
+
     const [destination, setDestination] = useState({
         from: '',
-        to: ''
+        to: '',
+        date:''
     });
 
     const [vehicle, setVehicle] = useState([]);
@@ -33,13 +35,15 @@ const Destination = () => {
     const handleDestination = () => {
         let userLocation = { ...location };
         userLocation = destination;
-        setLocation(userLocation)
+        setLocation(userLocation);
+        // console.log(userLocation)
         const newRide = vehicle.filter(ride => ride.key === key);
         setVehicle(newRide);
 
         const destinationPlace = { ...loggedInUser };
         destinationPlace.from = userLocation.from;
         destinationPlace.to = userLocation.to;
+        destinationPlace.date = userLocation.date;
         setLoggedInUser(destinationPlace);
 
     }
@@ -58,10 +62,17 @@ const Destination = () => {
             const data = { ...destination };
             data.to = fromData;
             setDestination(data)
-
-
+        }
+        if(e.target.name === 'date'){
+            const fromData = e.target.value;
+            const data = { ...destination };
+            data.date = fromData;
+            setDestination(data)
         }
     }
+
+
+    
 
 
     return (
@@ -81,13 +92,7 @@ const Destination = () => {
                         </form>
                     </div>
 
-                    {/* <div>
-                        <form action="">
-                            <p>From: {location.from}</p>
-                            <p>To: {location.to}</p>
-                        </form>
-                    </div> */}
-                    <br />
+                    <input type="date" onBlur={pickFrom} name="date" id=""/>
 
                     <button onClick={handleDestination} className='btn btn-warning'  ><Link className='search' to={"/rider/" + key}>
                         Search

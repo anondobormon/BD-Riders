@@ -27,8 +27,15 @@ const Login = () => {
         error: '',
         from: '',
         to: '',
+        date:'',
         success: false
-    })
+    });
+
+    console.log(user);
+
+
+
+
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
@@ -43,6 +50,7 @@ const Login = () => {
             .signInWithPopup(googleProvider)
             .then(res => {
                 const { displayName, email } = res.user;
+                console.log(res.user)
                 const signedInUser = {
                     isSignIn: true,
                     name: displayName,
@@ -91,10 +99,11 @@ const Login = () => {
         if (newUser && user.password && user.email) {
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                     const newUserInfo = { ...user };
                     newUserInfo.error = '';
                     newUserInfo.success = true;
+                    // console.log(newUserInfo);
                     setUser(newUserInfo)
                 })
                 .catch((error) => {
@@ -114,6 +123,7 @@ const Login = () => {
                     console.log(newUserInfo)
                     newUserInfo.error = '';
                     newUserInfo.success = true;
+                    console.log(newUserInfo);
                     setUser(newUserInfo);
                     setLoggedInUser(newUserInfo);
                     history.replace(from);
@@ -133,6 +143,7 @@ const Login = () => {
             .signInWithPopup(fbProvider)
             .then(res => {
                 const { displayName, email } = res.user;
+                console.log(res.user)
                 const signedInUser = {
                     isSignIn: true,
                     name: displayName,
@@ -140,6 +151,7 @@ const Login = () => {
 
                 }
                 setUser(signedInUser);
+                console.log(signedInUser)
                 setLoggedInUser(signedInUser);
                 history.replace(from);
             })

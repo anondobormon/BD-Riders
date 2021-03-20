@@ -9,7 +9,7 @@ const Rider = () => {
     const [data, setData] = useState([])
     console.log(data)
     const { key } = useParams();
-    console.log(key)
+    // console.log(key)
     useEffect(() => {
         const vehicle = fakeData.find(data => data.key === key)
         setData(vehicle)
@@ -21,30 +21,34 @@ const Rider = () => {
         <div className='Rider'>
             <div className="destination-details">
                 <div className="far">
+                    <h5>Please select your plan</h5>
+                    <h5>{loggedInUser.date}</h5>
+                
                     <h3>{loggedInUser.from}</h3>
+                    <p>To</p>
                     <h3>{loggedInUser.to}</h3>
                 </div>
                 <div className="vehicle">
-                    
+
                     <img className='car' src={data.img} alt="" />
                     <h4>{data.name}</h4>
-                    
+
                     <h5> <img className='person' src={data.person} alt="" /> 2</h5>
                     <h5>$ 50</h5>
                 </div>
                 <div className="vehicle">
-                    
+
                     <img className='car' src={data.img} alt="" />
                     <h4>{data.name}</h4>
-                    
+
                     <h5> <img className='person' src={data.person} alt="" /> 2</h5>
                     <h5>$ 50</h5>
                 </div>
                 <div className="vehicle">
-                    
+
                     <img className='car' src={data.img} alt="" />
                     <h4>{data.name}</h4>
-                    
+
                     <h5> <img className='person' src={data.person} alt="" /> 2</h5>
                     <h5>$ 50</h5>
                 </div>
