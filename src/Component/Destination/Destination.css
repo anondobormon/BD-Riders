@@ -1,5 +1,40 @@
 .pick p{
     margin: 0;
-    padding: 0;
+    padding: 12px 0px;
+    text-align: center;
+    text-align: left;
+    font-weight: 700;
+
     
 }
+.pick h2{
+    text-align: left;
+}
+
+.destination-form{
+    width: 100%;
+    margin: auto;
+    position: relative;
+    
+    border-radius: 10px;
+}
+.destination{
+    text-align: center;
+}
+.pick{
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 30%;
+    margin: auto;
+    position: relative;
+    padding: 4%;
+}
+.btn{
+    width: 100%;
+}
+.search{
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+}
+

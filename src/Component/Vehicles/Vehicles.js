@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Vehicles.css'
 
 
 const Vehicles = (props) => {
@@ -7,7 +8,6 @@ const Vehicles = (props) => {
     const {key, name, img} = props.vehicle
     return (
         <div>
-            {/* <h5>This is vehicle</h5> */}
             <Link to ={"/destination/" + key}>
                     <div className='bike'>
                         <img src={img} alt="" />
@@ -20,5 +20,3 @@ const Vehicles = (props) => {
 };
 
 export default Vehicles;
-
-// Link to={'/teams/' + idLeague}

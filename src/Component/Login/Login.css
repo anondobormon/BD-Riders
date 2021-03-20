@@ -1,9 +1,43 @@
-/* .login-form{
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-}
-
 .main-log{
-    width: 500px;
-} */
+    width: 40%;
+    margin: auto;
+    position:relative;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5%;
+    text-align: center;
+}   
+.log-in{
+    width: 100%;
+}
+.log-in h3{
+    text-align: left;
+}
+.forget{
+    display: flex;
+    justify-content: space-between;
+}
+.forget p{
+    border-bottom: 1px solid black;
+}
+.have-account{
+    background: none;
+    border: none;
+    font-size: 18px;
+    border-bottom: 1px solid tomato;
+    color: tomato;
+}
+.sign-In-btn{
+    background: none;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 8px;
+    text-align: center;
+    width: 100%;
+}
+.other-sign-in{
+    width: 70%;
+    margin: auto;
+    position: relative;
+    padding-top: 20px;
+}

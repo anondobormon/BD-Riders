@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { UserContext } from '../../App';
-import fakeData from '../fakeData/data.json'
+import fakeData from '../fakeData/data.json';
+import './Rider.css';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const Rider = () => {
     const [data, setData] = useState([])
@@ -16,10 +18,37 @@ const Rider = () => {
     const [loggedInUser] = useContext(UserContext);
     console.log(loggedInUser)
     return (
-        <div>
-            <h3>{loggedInUser.from}</h3>
-            <h3>{loggedInUser.to}</h3>
-            <h4>Jurney by : {data.name}</h4>
+        <div className='Rider'>
+            <div className="destination-details">
+                <div className="far">
+                    <h3>{loggedInUser.from}</h3>
+                    <h3>{loggedInUser.to}</h3>
+                </div>
+                <div className="vehicle">
+                    
+                    <img className='car' src={data.img} alt="" />
+                    <h4>{data.name}</h4>
+                    
+                    <h5> <img className='person' src={data.person} alt="" /> 2</h5>
+                    <h5>$ 50</h5>
+                </div>
+                <div className="vehicle">
+                    
+                    <img className='car' src={data.img} alt="" />
+                    <h4>{data.name}</h4>
+                    
+                    <h5> <img className='person' src={data.person} alt="" /> 2</h5>
+                    <h5>$ 50</h5>
+                </div>
+                <div className="vehicle">
+                    
+                    <img className='car' src={data.img} alt="" />
+                    <h4>{data.name}</h4>
+                    
+                    <h5> <img className='person' src={data.person} alt="" /> 2</h5>
+                    <h5>$ 50</h5>
+                </div>
+            </div>
         </div>
     );
 };

@@ -19,7 +19,7 @@ const Header = () => {
                         <li><Link to="/blog">Blog</Link> </li>
                         <li><Link to="/contact">Contact</Link></li>
                         {/* <li><Link to ="/takeRide">Ride</Link></li> */}
-                        {loggedUser ? <li><Link>{loggedInUser.name}</Link></li> : <li><Link to="/login"> Log In</Link></li>}
+                        {loggedUser ? <li><Link >{loggedInUser.name}</Link></li> : <li><Link className='btn btn-warning' to="/login"> Log In</Link></li>}
                     </ul>
 
                 </div>

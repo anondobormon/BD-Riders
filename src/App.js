@@ -21,45 +21,47 @@ export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-      <Router>
-        <Header></Header>
-        <Switch>
-          <Route path='/home'>
-            <Home></Home>
-          </Route>
+    <div className='App'>
+      <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+        <Router>
+          <Header></Header>
+          <Switch>
+            <Route path='/home'>
+              <Home></Home>
+            </Route>
 
-          <PrivetRoute path='/destination/:key'>
-            <Destination></Destination>
-          </PrivetRoute>
-          <PrivetRoute path='/destination'>
-            <Destination></Destination>
-          </PrivetRoute>
+            <PrivetRoute path='/destination/:key'>
+              <Destination></Destination>
+            </PrivetRoute>
+            <PrivetRoute path='/destination'>
+              <Destination></Destination>
+            </PrivetRoute>
 
-          <Route path='/login'>
-            <Login></Login>
-          </Route>
+            <Route path='/login'>
+              <Login></Login>
+            </Route>
 
-          <Route path='/contact'>
-            <Contact></Contact>
-          </Route>
+            <Route path='/contact'>
+              <Contact></Contact>
+            </Route>
 
-          <Route path='/blog'>
-            <Blog></Blog>
-          </Route>
-          <Route path='/rider/:key'>
-            <Rider></Rider>
-          </Route>
-          <Route exact path='/'>
-            <Home></Home>
-          </Route>
+            <Route path='/blog'>
+              <Blog></Blog>
+            </Route>
+            <Route path='/rider/:key'>
+              <Rider></Rider>
+            </Route>
+            <Route exact path='/'>
+              <Home></Home>
+            </Route>
 
-          <Route path="*">
-            <NotFound></NotFound>
-          </Route>
-        </Switch>
-      </Router>
-    </UserContext.Provider>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
+          </Switch>
+        </Router>
+      </UserContext.Provider>
+    </div>
   );
 }
 

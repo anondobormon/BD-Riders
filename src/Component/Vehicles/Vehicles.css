@@ -1,0 +1,19 @@
+.bike{
+    width: 80%;
+    padding: 20px;
+    background:white;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.5s ease;
+}
+.bike img{
+    width: 70%;
+}
+.bike h3{
+    color: black;
+    padding-top: 30px;
+    
+}
+.bike:hover{
+    background: rgb(238, 238, 238);
+}

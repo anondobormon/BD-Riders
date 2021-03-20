@@ -5,6 +5,10 @@ import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
+import './Login.css';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -149,7 +153,7 @@ const Login = () => {
 
     return (
         <div className='App'>
-            <h3>This is login section</h3>
+
 
             <div className="main-log">
                 <div className="log-in">
@@ -157,24 +161,40 @@ const Login = () => {
 
                     <h3>{newUser ? "Create an account" : "Login"}</h3>
                     <form action="">
-                        {newUser && <input type="text" name='name' placeholder='Name' onBlur={handleBlur} required />}
+                        {newUser && <input className='form-control' type="text" name='name' placeholder='Name' onBlur={handleBlur} required />}
+                        
                         <br />
-                        <input type="text" name='email' onBlur={handleBlur} placeholder='Username or Email' required />
+                        <input className='form-control' type="text" name='email' onBlur={handleBlur} placeholder='Username or Email' required />
+                        
                         <br />
-                        <input type="password" name="password" onBlur={handleBlur} id="" required placeholder='Password' />
+                        <input className='form-control' type="password" name="password" onBlur={handleBlur} id="" required placeholder='Password' />
+                        
                         <br />
-                        <input type="submit" value={newUser ? 'Sign Up' : 'Sign In'} onClick={handleSubmit} />
+                        
+                        <div className="forget">
+                            
+                            <label htmlFor="remember"> <input type="checkbox" name="remember" id="" /> Remember Me</label>
+                            <p>Forget Password</p>
+                        </div>
+
+                        <input  className='btn btn-warning' type="submit" value={newUser ? 'Sign Up' : 'Login'} onClick={handleSubmit} />
+                        
                         <br />
-                        <h4>{newUser ? "Already have an account?" : "Don't have an account?"} <button onClick={() => setNewUser(!newUser)}>{newUser ? 'Login' : 'Create an account'}</button> </h4>
+                        <h5>{newUser ? "Already have an account?" : "Don't have an account?"} <button className='have-account' onClick={() => setNewUser(!newUser)}>{newUser ? 'Login' : 'Create an account'}</button> </h5>
                     </form>
+
+
                     <p style={{ color: 'red' }}>{user.error}</p>
                     {user.success && <p style={{ color: 'green' }}>User {newUser ? "Created" : "Logged In"} Successfully</p>}
                 </div>
-            </div>
-            <div className="other-sign-in">
-                <button onClick={handleFbSignIn}>Continue with Facebook</button>
-                <br />
-                <button onClick={handleGoogleSignIn}>Continue with Google</button>
+
+                <p>Or</p>
+                <div className="other-sign-in">
+                    <button className='sign-In-btn' onClick={handleFbSignIn}>Continue with Facebook</button>
+                    <br />
+                    <br/>
+                    <button className='sign-In-btn' onClick={handleGoogleSignIn}>Continue with Google</button>
+                </div>
             </div>
         </div>
     );

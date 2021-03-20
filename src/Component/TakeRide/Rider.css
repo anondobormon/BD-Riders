@@ -1,0 +1,42 @@
+
+.destination-details{
+    margin: 5% 10%;
+}
+
+
+
+
+
+.destination-details{
+    width: 30%;
+    border-radius: 10px;
+    padding: 15px;
+    background: rgb(243, 243, 243);
+
+}
+
+.far{
+    padding: 25px 20px;
+    color: white;
+    background: tomato;
+    border-radius: 10px;
+}
+
+
+
+.vehicle{
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+}
+.car{
+    width: 20%;
+}
+.person{
+    width: 40%;
+    height: 40%;
+}

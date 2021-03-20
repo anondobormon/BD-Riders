@@ -4,6 +4,7 @@ import TakeRide from '../TakeRide/TakeRide';
 import './Destination.css';
 import fakeData from '../fakeData/data.json'
 import { UserContext } from '../../App';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 const Destination = () => {
@@ -64,30 +65,31 @@ const Destination = () => {
 
 
     return (
-        <div className='App'>
-            <h3>This is destination</h3>
+        <div>
 
 
             <div className="destination">
-                <div className="pick">
-                    <div>
+                <div className="pick align-middle">
+                    <div className='destination-form'>
+                       
                         <form action="">
-                            <p>Pick From</p>
-                            <input onBlur={pickFrom} type="text" name='from' required />
-                            <p>Pick To</p>
-                            <input onBlur={pickFrom} type="text" name='to' required />
+                            <p>From</p>
+                            <input onBlur={pickFrom} className='inputform form-control' placeholder='From' type="text" name='from' required />
+                            <p>To</p>
+                            <input onBlur={pickFrom} className='inputform form-control' placeholder='To' type="text" name='to' required />
                             <br />
                         </form>
                     </div>
-                    <div>
+
+                    {/* <div>
                         <form action="">
                             <p>From: {location.from}</p>
                             <p>To: {location.to}</p>
                         </form>
-                    </div>
+                    </div> */}
                     <br />
 
-                    <button onClick={handleDestination}   ><Link to={"/rider/" + key}>
+                    <button onClick={handleDestination} className='btn btn-warning'  ><Link className='search' to={"/rider/" + key}>
                         Search
                 </Link ></button>
                     {
