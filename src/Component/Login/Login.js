@@ -103,14 +103,10 @@ const Login = () => {
     const handleSubmit = (e) => {
 
         const { password, confirmPassword } = matchPassword;
-        if (password !== confirmPassword) {
-            console.log('Unmatch')
-            const samePassword = { ...matchPassword };
-            samePassword.passwords = true;
-            setMatchPassword(samePassword)
-        }
-        else {
-            // console.log('clicked')
+        if (password === confirmPassword) {
+            
+
+             // console.log('clicked')
             // console.log(user.email, user.password)
             if (newUser && user.password && user.email) {
                 firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
@@ -131,7 +127,13 @@ const Login = () => {
 
             }
         }
-
+        else {
+            console.log('Unmatch')
+            const samePassword = { ...matchPassword };
+            samePassword.passwords = true;
+            setMatchPassword(samePassword)
+        }
+        
 
         if (!newUser && user.password && user.email) {
             console.log(user.email, user.password, user.name)
@@ -202,7 +204,7 @@ const Login = () => {
                         <br />
                         {newUser && <input className='form-control' type="password" name='confirmPassword' placeholder='Confirm Password' onBlur={handleBlur} required />}
 
-                        {matchPassword.passwords ? <p style={{color: 'red'}}>Incorrect password</p> : <p></p>}
+                        {matchPassword.passwords && <p style={{color: 'red'}}>Incorrect password</p> }
 
                         <div className="forget">
 

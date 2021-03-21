@@ -13,4 +13,6 @@
 4. After login show Username
 5. Google Map
 6. Responsive
+7. Confirm password then sign up.
+NB: I can't fix password matching problem when login.
     
