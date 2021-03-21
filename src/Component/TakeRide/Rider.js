@@ -4,6 +4,7 @@ import { UserContext } from '../../App';
 import fakeData from '../fakeData/data.json';
 import './Rider.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Map from '../Map/Map';
 
 const Rider = () => {
     const [data, setData] = useState([])
@@ -52,6 +53,9 @@ const Rider = () => {
                     <h5> <img className='person' src={data.person} alt="" /> 2</h5>
                     <h5>$ 50</h5>
                 </div>
+            </div>
+            <div className="map">
+                <Map></Map>
             </div>
         </div>
     );

@@ -7,6 +7,8 @@ import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
 import './Login.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Facebook from '../../images/fb.jpg';
+import Google from '../../images/gg.jpg'
 
 
 
@@ -55,17 +57,12 @@ const Login = () => {
                     isSignIn: true,
                     name: displayName,
                     email: email
-
                 }
                 setUser(signedInUser);
                 setLoggedInUser(signedInUser);
                 history.replace(from);
-                // console.log(res.user);
-
-            }).catch((error) => {
-                // var errorCode = error.code;
-                // var errorMessage = error.message;
-                // console.log(errorCode, errorMessage)
+            })
+            .catch((error) => {
                 const newUserInfo = { ...user };
                 newUserInfo.error = error.message;
                 newUserInfo.success = false;
@@ -180,9 +177,10 @@ const Login = () => {
                         
                         <br />
                         <input className='form-control' type="password" name="password" onBlur={handleBlur} id="" required placeholder='Password' />
+                        <br/>
+                        {newUser && <input className='form-control' type="text" name='confirm-password' placeholder='Confirm Password' onBlur={handleBlur} required />}
                         
-                        <br />
-                        
+
                         <div className="forget">
                             
                             <label htmlFor="remember"> <input type="checkbox" name="remember" id="" /> Remember Me</label>
@@ -202,10 +200,10 @@ const Login = () => {
 
                 <p>Or</p>
                 <div className="other-sign-in">
-                    <button className='sign-In-btn' onClick={handleFbSignIn}>Continue with Facebook</button>
+                    <button className='sign-In-btn' onClick={handleFbSignIn}><img src={Facebook} alt=""/> Continue with Facebook</button>
                     <br />
                     <br/>
-                    <button className='sign-In-btn' onClick={handleGoogleSignIn}>Continue with Google</button>
+                    <button className='sign-In-btn' onClick={handleGoogleSignIn}><img src={Google} alt=""/> Continue with Google</button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,12 @@
 
+.Rider{
+    display: flex;
+    
+}
+.map{
+    margin: 5% 0%;
+    width: 40%;
+}
 .destination-details{
     margin: 5% 10%;
 }

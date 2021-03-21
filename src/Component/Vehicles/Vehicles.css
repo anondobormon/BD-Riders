@@ -1,8 +1,9 @@
 .bike{
     width: 80%;
     padding: 20px;
-    background:white;
+    background:transparent;
     text-align: center;
+    border: 3px solid white;
     border-radius: 10px;
     transition: 0.5s ease;
 }

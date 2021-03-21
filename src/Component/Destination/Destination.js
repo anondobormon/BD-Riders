@@ -84,16 +84,16 @@ const Destination = () => {
                     <div className='destination-form'>
                        
                         <form action="">
-                            <p>From</p>
+                            <p>Pick From</p>
                             <input onBlur={pickFrom} className='inputform form-control' placeholder='From' type="text" name='from' required />
                             <p>To</p>
                             <input onBlur={pickFrom} className='inputform form-control' placeholder='To' type="text" name='to' required />
                             <br />
                         </form>
                     </div>
-
-                    <input type="date" onBlur={pickFrom} name="date" id=""/>
-
+                    <p>Date</p>
+                    <input type="date" className='inputform form-control' onBlur={pickFrom} name="date" id=""/>
+                    <br/>
                     <button onClick={handleDestination} className='btn btn-warning'  ><Link className='search' to={"/rider/" + key}>
                         Search
                 </Link ></button>

@@ -4,8 +4,10 @@
 .home-page{
     margin: 0% 10%;
     margin-top: 0px;
-    height: 110vh;
+    
+    padding-top: 200px;/* height: 110vh; */
     display: grid;
+    
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
     align-items: center;
