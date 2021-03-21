@@ -18,6 +18,9 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+    .blog{
+        display: none;
+    }
   }
   @media (max-width: 764px) {
     .home-page{

@@ -19,6 +19,9 @@ if (!firebase.apps.length) {
 }
 
 const Login = () => {
+    const [matchPassword, setMatchPassword] = useState({})
+    console.log(matchPassword)
+
     const [newUser, setNewUser] = useState(false);
     const [user, setUser] = useState({
         isSignIn: false,
@@ -29,7 +32,7 @@ const Login = () => {
         error: '',
         from: '',
         to: '',
-        date:'',
+        date: '',
         success: false
     });
 
@@ -83,39 +86,58 @@ const Login = () => {
         if (e.target.name === 'name') {
             fieldValid = e.target.value;
         }
+        if (e.target.name === 'confirm-password') {
+            fieldValid = e.target.value
+        }
         if (fieldValid) {
             const newUserInfo = { ...user };
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo)
+            setMatchPassword(newUserInfo)
+
         }
     }
 
-    const handleSubmit = (e) => {
-        // console.log('clicked')
-        // console.log(user.email, user.password)
-        if (newUser && user.password && user.email) {
-            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-                .then(res => {
-                    // console.log(res)
-                    const newUserInfo = { ...user };
-                    newUserInfo.error = '';
-                    newUserInfo.success = true;
-                    // console.log(newUserInfo);
-                    setUser(newUserInfo)
-                })
-                .catch((error) => {
-                    const newUserInfo = { ...user };
-                    newUserInfo.error = error.message;
-                    newUserInfo.success = false;
-                    setUser(newUserInfo);
-                });
 
+
+    const handleSubmit = (e) => {
+
+        const { password, confirmPassword } = matchPassword;
+        if (password !== confirmPassword) {
+            console.log('Unmatch')
+            const samePassword = { ...matchPassword };
+            samePassword.passwords = true;
+            setMatchPassword(samePassword)
         }
+        else {
+            // console.log('clicked')
+            // console.log(user.email, user.password)
+            if (newUser && user.password && user.email) {
+                firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+                    .then(res => {
+                        console.log(res)
+                        const newUserInfo = { ...user };
+                        newUserInfo.error = '';
+                        newUserInfo.success = true;
+                        // console.log(newUserInfo);
+                        setUser(newUserInfo)
+                    })
+                    .catch((error) => {
+                        const newUserInfo = { ...user };
+                        newUserInfo.error = error.message;
+                        newUserInfo.success = false;
+                        setUser(newUserInfo);
+                    });
+
+            }
+        }
+
+
         if (!newUser && user.password && user.email) {
-            console.log(user.email, user.password, user.displayName)
+            console.log(user.email, user.password, user.name)
             firebase.auth().signInWithEmailAndPassword(user.email, user.password)
                 .then(res => {
-
+                    console.log(res.user)
                     const newUserInfo = { ...user };
                     console.log(newUserInfo)
                     newUserInfo.error = '';
@@ -171,24 +193,25 @@ const Login = () => {
                     <h3>{newUser ? "Create an account" : "Login"}</h3>
                     <form action="">
                         {newUser && <input className='form-control' type="text" name='name' placeholder='Name' onBlur={handleBlur} required />}
-                        
+
                         <br />
                         <input className='form-control' type="text" name='email' onBlur={handleBlur} placeholder='Username or Email' required />
-                        
+
                         <br />
                         <input className='form-control' type="password" name="password" onBlur={handleBlur} id="" required placeholder='Password' />
-                        <br/>
-                        {newUser && <input className='form-control' type="text" name='confirm-password' placeholder='Confirm Password' onBlur={handleBlur} required />}
-                        
+                        <br />
+                        {newUser && <input className='form-control' type="password" name='confirmPassword' placeholder='Confirm Password' onBlur={handleBlur} required />}
+
+                        {matchPassword.passwords ? <p style={{color: 'red'}}>Incorrect password</p> : <p></p>}
 
                         <div className="forget">
-                            
+
                             <label htmlFor="remember"> <input type="checkbox" name="remember" id="" /> Remember Me</label>
                             <p>Forget Password</p>
                         </div>
 
-                        <input  className='btn btn-warning' type="submit" value={newUser ? 'Sign Up' : 'Login'} onClick={handleSubmit} />
-                        
+                        <input className='btn btn-warning' type="submit" value={newUser ? 'Sign Up' : 'Login'} onClick={handleSubmit} />
+
                         <br />
                         <h5>{newUser ? "Already have an account?" : "Don't have an account?"} <button className='have-account' onClick={() => setNewUser(!newUser)}>{newUser ? 'Login' : 'Create an account'}</button> </h5>
                     </form>
@@ -200,10 +223,10 @@ const Login = () => {
 
                 <p>Or</p>
                 <div className="other-sign-in">
-                    <button className='sign-In-btn' onClick={handleFbSignIn}><img src={Facebook} alt=""/> Continue with Facebook</button>
+                    <button className='sign-In-btn' onClick={handleFbSignIn}><img src={Facebook} alt="" /> Continue with Facebook</button>
                     <br />
-                    <br/>
-                    <button className='sign-In-btn' onClick={handleGoogleSignIn}><img src={Google} alt=""/> Continue with Google</button>
+                    <br />
+                    <button className='sign-In-btn' onClick={handleGoogleSignIn}><img src={Google} alt="" /> Continue with Google</button>
                 </div>
             </div>
         </div>
