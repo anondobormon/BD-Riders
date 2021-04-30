@@ -4,7 +4,7 @@ Project Cetagorie:  Ride Shearing app related
 
 Live Link:  https://bd-rider-aff06.web.app/
 
-# Used Function here:
+Used Function here:
 
 1. Firebase Authentication
 2. React privet route
